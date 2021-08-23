@@ -7,6 +7,7 @@ const App = (props) => {
 	const [values, setValues] = useState({
 		profiles: [],
 	});
+
 	const addNewProfile = (profileData) => {
 		setValues((prevValues) => ({
 			profiles: [...prevValues.profiles, profileData],

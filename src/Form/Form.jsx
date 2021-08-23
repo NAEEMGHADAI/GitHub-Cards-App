@@ -11,7 +11,6 @@ const Form = (props) => {
 		e.preventDefault();
 		setLoading(true);
 		const resp = await axios.get(`https://api.github.com/users/${user.name}`);
-		console.log(user.name);
 		props.onSubmit(resp.data);
 		setUser({ name: "" });
 		setLoading(false);
@@ -21,7 +20,6 @@ const Form = (props) => {
 	const handleInputs = (e) => {
 		name = e.target.name;
 		value = e.target.value;
-		console.log(value);
 		setUser({ ...user, [name]: value });
 	};
 
@@ -29,27 +27,34 @@ const Form = (props) => {
 		<>
 			{loading ? (
 				<>
-					<h1>Loading....</h1>
+					<h1 className="text-center">Loading....</h1>
 				</>
 			) : (
 				<div className="container">
 					<form onSubmit={handleSubmit}>
-						<input
-							type="text"
-							placeholder="GitHub username"
-							name="name"
-							id="name"
-							value={user.name}
-							onChange={handleInputs}
-							className="form-control"
-							required
-						/>
-						<button className="btn btn-muted">
-							<img
-								src="https://img.icons8.com/color/30/000000/search--v2.png"
-								alt="search"
-							/>
-						</button>
+						<div className="row">
+							<div className="col-md-10 col-10">
+								<input
+									type="text"
+									placeholder="GitHub username"
+									name="name"
+									id="name"
+									value={user.name}
+									onChange={handleInputs}
+									className="form-control"
+									required
+								/>
+							</div>
+
+							<div className="col-md-2 col-2">
+								<button className="btn btn-muted">
+									<img
+										src="https://img.icons8.com/color/25/000000/search--v2.png"
+										alt="search"
+									/>
+								</button>
+							</div>
+						</div>
 					</form>
 				</div>
 			)}
