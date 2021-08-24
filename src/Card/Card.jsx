@@ -8,7 +8,7 @@ const Card = (props) => {
 	localStorage.setItem("company", profile.company);
 	localStorage.setItem("avatar_url", profile.avatar_url);
 	return (
-		<div>
+		<div className="ml-5">
 			<div className="containerCard">
 				<div className="github-profile">
 					<img src={profile.avatar_url} alt="" />
